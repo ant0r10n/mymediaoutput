@@ -1,0 +1,180 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<a name="detail-view"></a>
+<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+
+<div class="panel-body" id="media_dv_container">
+	<!-- child links -->
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<!-- form inputs -->
+		<div class="col-md-8 col-lg-10" id="media_dv_form">
+			<fieldset class="form-horizontal">
+
+				<div class="form-group">
+					<label for="id" class="control-label col-lg-3">ID</label>
+					<div class="col-lg-9">
+						<p class="form-control-static" id="id"><%%VALUE(id)%%></p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="type" class="control-label col-lg-3">Type<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<%%COMBO(type)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="title" class="control-label col-lg-3">Title<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="40" type="text" class="form-control" name="title" id="title" value="<%%VALUE(title)%%>" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="artist" class="control-label col-lg-3">Artist<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="40" type="text" class="form-control" name="artist" id="artist" value="<%%VALUE(artist)%%>" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="condition" class="control-label col-lg-3">Condition<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<%%COMBO(condition)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="image" class="control-label col-lg-3">Image <button class="btn btn-info btn-xs vspacer-sm" type="button" data-toggle="collapse" tabindex="-1" data-target="#image-description"><i class="glyphicon glyphicon-info-sign"></i></button></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="image-description"><div class="alert alert-info">Maximum file size allowed: 1000 KB.<br />Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="row"><div class="col-md-8">
+
+						<a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image)%%>" rel="lightbox[media_dv]"><img src="thumbnail.php?i=<%%VALUE(image)%%>&t=media&f=image&v=dv" class="img-thumbnail"></a>
+</div>
+
+												<div class="col-md-4">
+							<%%UPLOADFILE(image)%%>
+							<%%REMOVEFILE(image)%%>
+						</div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="image2" class="control-label col-lg-3">Image2 <button class="btn btn-info btn-xs vspacer-sm" type="button" data-toggle="collapse" tabindex="-1" data-target="#image2-description"><i class="glyphicon glyphicon-info-sign"></i></button></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="image2-description"><div class="alert alert-info">Maximum file size allowed: 1000 KB.<br />Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="row"><div class="col-md-8">
+
+						<a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image2)%%>" rel="lightbox[media_dv]"><img src="thumbnail.php?i=<%%VALUE(image2)%%>&t=media&f=image2&v=dv" class="img-thumbnail"></a>
+</div>
+
+												<div class="col-md-4">
+							<%%UPLOADFILE(image2)%%>
+							<%%REMOVEFILE(image2)%%>
+						</div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="price" class="control-label col-lg-3">Price<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="13" type="text" class="form-control" name="price" id="price" value="<%%VALUE(price)%%>" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="active" class="control-label col-lg-3">Active<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="" type="text" class="form-control" name="active" id="active" value="<%%VALUE(active)%%>" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="description" class="control-label col-lg-3">Description<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<%%HTMLAREA(description)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="buttoncode" class="control-label col-lg-3">Buttoncode</label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="" type="text" class="form-control" name="buttoncode" id="buttoncode" value="<%%VALUE(buttoncode)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="buttonactive" class="control-label col-lg-3">Buttonactive</label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="11" type="text" class="form-control" name="buttonactive" id="buttonactive" value="<%%VALUE(buttonactive)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="date" class="control-label col-lg-3">Date</label>
+					<div class="col-lg-9">
+						<p class="form-control-static" id="date"><%%COMBOTEXT(date)%%></p>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+
+		<!-- DV action buttons -->
+		<div class="col-md-4 col-lg-2" id="media_dv_action_buttons">
+			<div class="btn-toolbar">
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%UPDATE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%DESELECT_BUTTON%%>
+					<%%DELETE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%INSERT_BUTTON%%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div><!-- /div class="panel-body" -->
+	<script src="nicEdit.js"></script>
+	<script>
+		bkLib.onDomLoaded(function(){
+			if(document.getElementById('description')!=undefined)
+				new nicEditor().panelInstance('description');
+
+			jQuery(function(){
+				jQuery('.nicEdit-panelContain').parent().width('100%');
+				jQuery('.nicEdit-panelContain').parent().next().width('98%');
+				jQuery('.nicEdit-main').width('99%').attr('tabindex', 1);
+			});
+		});
+		jQuery(function(){
+			var formAlreadyChanged = 0;
+			jQuery('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			jQuery('form').eq(0).change(function(){
+				if(formAlreadyChanged) return;
+				if(jQuery('#deselect').length) jQuery('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				formAlreadyChanged = 1;
+			});
+
+			jQuery('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ return false; });
+		});
+
+	</script>

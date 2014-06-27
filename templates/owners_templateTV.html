@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%select%%> and <%%endselect%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- open the generated 'owners_view.php' file in your text editor and -->
+<!-- change the value of $x->ShowTableHeader to 0 -->
+
+		<td id="owners-name-<%%VALUE(id)%%>" class="owners-name "><%%SELECT%%><%%VALUE(name)%%><%%ENDSELECT%%></td>
+		<td id="owners-pass-<%%VALUE(id)%%>" class="owners-pass "><%%SELECT%%><%%VALUE(pass)%%><%%ENDSELECT%%></td>
+		<td id="owners-level-<%%VALUE(id)%%>" class="owners-level text-right"><%%SELECT%%><%%VALUE(level)%%><%%ENDSELECT%%></td>
+		<td id="owners-image-<%%VALUE(id)%%>" class="owners-image "><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image)%%>" rel="lightbox"><img src="thumbnail.php?i=<%%VALUE(image)%%>&t=owners&f=image&v=tv" class="img-thumbnail"></a></td>
