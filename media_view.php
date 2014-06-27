@@ -123,7 +123,7 @@
 	$x->AllowUpdate = $perm[3];
 	$x->SeparateDV = 1;
 	$x->AllowDeleteOfParents = 0;
-	$x->AllowFilters = 0;
+	$x->AllowFilters = 1;
 	$x->AllowSavingFilters = 0;
 	$x->AllowSorting = 1;
 	$x->AllowNavigation = 1;
@@ -136,7 +136,7 @@
 	$x->ScriptFileName = "media_view.php";
 	$x->RedirectAfterInsert = "media_view.php?SelectedID=#ID#";
 	$x->TableTitle = "Media";
-	$x->TableIcon = "table.gif";
+	$x->TableIcon = "resources/table_icons/backup_manager.png";
 	$x->PrimaryKey = "`media`.`id`";
 	$x->DefaultSortField = '`media`.`date`';
 	$x->DefaultSortDirection = 'asc';

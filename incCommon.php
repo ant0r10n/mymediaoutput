@@ -105,8 +105,10 @@
 	#########################################################
 	function getTableList(){
 		$arrTables=array(   
-			'media'=>array('Media', '', 'table.gif'),
-			'owners'=>array('Owners', '', 'table.gif')
+			'media'=>array('Media', '', 'resources/table_icons/backup_manager.png'),
+			'owners'=>array('Owners', '', 'resources/table_icons/administrator.png'),
+			'ads'=>array('Ads', '', 'resources/table_icons/align_right.png'),
+			'advertisers'=>array('Advertisers', '', 'resources/table_icons/book_addresses.png')
 			);
 		if(is_array($arrTables)){
 			foreach($arrTables as $tn=>$tc){

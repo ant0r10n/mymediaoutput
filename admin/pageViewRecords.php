@@ -82,8 +82,8 @@
 						<td align="center">
 							Show records from
 							<?php
-								$arrFields=array('', 'media', 'owners');
-								$arrFieldCaptions=array('All tables', 'Media', 'Owners');
+								$arrFields=array('', 'media', 'owners', 'ads', 'advertisers');
+								$arrFieldCaptions=array('All tables', 'Media', 'Owners', 'Ads', 'Advertisers');
 								echo htmlSelect('tableName', $arrFields, $arrFieldCaptions, $tableName);
 							?>
 							</td>

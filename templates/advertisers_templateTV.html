@@ -1,0 +1,12 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%select%%> and <%%endselect%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- open the generated 'advertisers_view.php' file in your text editor and -->
+<!-- change the value of $x->ShowTableHeader to 0 -->
+
+		<td id="advertisers-Name-<%%VALUE(id)%%>" class="advertisers-Name "><%%SELECT%%><%%VALUE(Name)%%><%%ENDSELECT%%></td>
+		<td id="advertisers-AffilateCode-<%%VALUE(id)%%>" class="advertisers-AffilateCode "><%%SELECT%%><%%VALUE(AffilateCode)%%><%%ENDSELECT%%></td>
+		<td id="advertisers-URL-<%%VALUE(id)%%>" class="advertisers-URL "><%%SELECT%%><%%VALUE(URL)%%><%%ENDSELECT%%></td>
+		<td id="advertisers-Contact-<%%VALUE(id)%%>" class="advertisers-Contact "><%%SELECT%%><%%VALUE(Contact)%%><%%ENDSELECT%%></td>
+		<td id="advertisers-email-<%%VALUE(id)%%>" class="advertisers-email "><a href="mailto:<%%VALUE(email)%%>" title="<%%VALUE(email)%%>" class="btn btn-default"><i class="glyphicon glyphicon-envelope text-info"></i></a></td>

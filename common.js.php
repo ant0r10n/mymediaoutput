@@ -50,6 +50,14 @@ function media_validateData(){
 function owners_validateData(){
 	return true;
 }
+function ads_validateData(){
+	if($('advertiser').value == ''){ modal_window({ message: '<div class="alert alert-danger"><?php echo addslashes($Translation['field not null']); ?></div>', title: "<?php echo addslashes($Translation['error:']); ?> Advertiser", close: function(){ jQuery('#advertiser').focus(); } }); return false; };
+	if($('active').value == ''){ modal_window({ message: '<div class="alert alert-danger"><?php echo addslashes($Translation['field not null']); ?></div>', title: "<?php echo addslashes($Translation['error:']); ?> Active", close: function(){ jQuery('#active').focus(); } }); return false; };
+	return true;
+}
+function advertisers_validateData(){
+	return true;
+}
 function post(url, params, update, disable, loading){
 	new Ajax.Request(
 		url, {

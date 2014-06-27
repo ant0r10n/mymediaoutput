@@ -11,6 +11,9 @@
 		),
 		'owners' => array(
 			'image' => '../images/'
+		),
+		'ads' => array(
+			'image' => '../images/'
 		)
 	);
 

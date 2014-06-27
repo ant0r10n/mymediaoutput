@@ -6,11 +6,11 @@
 	include("$currDir/defaultLang.php");
 	include("$currDir/language.php");
 	include("$currDir/lib.php");
-	@include("$currDir/hooks/owners.php");
-	include("$currDir/owners_dml.php");
+	@include("$currDir/hooks/advertisers.php");
+	include("$currDir/advertisers_dml.php");
 
 	// mm: can the current member access this page?
-	$perm=getTablePermissions('owners');
+	$perm=getTablePermissions('advertisers');
 	if(!$perm[0]){
 		echo error_message($Translation['tableAccessDenied'], false);
 		echo '<script>setTimeout("window.location=\'index.php?signOut=1\'", 2000);</script>';
@@ -18,53 +18,60 @@
 	}
 
 	$x = new DataList;
-	$x->TableName = "owners";
+	$x->TableName = "advertisers";
 
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV=array(   
-		"`owners`.`id`" => "id",
-		"`owners`.`name`" => "name",
-		"`owners`.`pass`" => "pass",
-		"`owners`.`level`" => "level",
-		"`owners`.`image`" => "image"
+		"`advertisers`.`id`" => "id",
+		"`advertisers`.`Name`" => "Name",
+		"`advertisers`.`AffilateCode`" => "AffilateCode",
+		"`advertisers`.`URL`" => "URL",
+		"`advertisers`.`Contact`" => "Contact",
+		"`advertisers`.`email`" => "email"
 	);
 	// mapping incoming sort by requests to actual query fields
 	$x->SortFields = array(   
-		1 => '`owners`.`id`',
+		1 => '`advertisers`.`id`',
 		2 => 2,
 		3 => 3,
-		4 => '`owners`.`level`',
-		5 => 5
+		4 => 4,
+		5 => 5,
+		6 => 6
 	);
 
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV=array(   
-		"`owners`.`id`" => "id",
-		"`owners`.`name`" => "name",
-		"`owners`.`pass`" => "pass",
-		"`owners`.`level`" => "level",
-		"`owners`.`image`" => "image"
+		"`advertisers`.`id`" => "id",
+		"`advertisers`.`Name`" => "Name",
+		"`advertisers`.`AffilateCode`" => "AffilateCode",
+		"`advertisers`.`URL`" => "URL",
+		"`advertisers`.`Contact`" => "Contact",
+		"`advertisers`.`email`" => "email"
 	);
 	// Fields that can be filtered
 	$x->QueryFieldsFilters=array(   
-		"`owners`.`id`" => "ID",
-		"`owners`.`name`" => "Name",
-		"`owners`.`pass`" => "Pass",
-		"`owners`.`level`" => "Level"
+		"`advertisers`.`id`" => "ID",
+		"`advertisers`.`Name`" => "Name",
+		"`advertisers`.`AffilateCode`" => "AffilateCode",
+		"`advertisers`.`URL`" => "URL",
+		"`advertisers`.`Contact`" => "Contact",
+		"`advertisers`.`email`" => "Email"
 	);
 
 	// Fields that can be quick searched
 	$x->QueryFieldsQS=array(   
-		"`owners`.`id`" => "id",
-		"`owners`.`name`" => "name",
-		"`owners`.`pass`" => "pass",
-		"`owners`.`level`" => "level"
+		"`advertisers`.`id`" => "id",
+		"`advertisers`.`Name`" => "Name",
+		"`advertisers`.`AffilateCode`" => "AffilateCode",
+		"`advertisers`.`URL`" => "URL",
+		"`advertisers`.`Contact`" => "Contact",
+		"`advertisers`.`email`" => "email"
 	);
 
 	// Lookup fields that can be used as filterers
 	$x->filterers = array();
 
-	$x->QueryFrom="`owners` ";
+	$x->QueryFrom="`advertisers` ";
 	$x->QueryWhere='';
 	$x->QueryOrder='';
 
@@ -85,19 +92,19 @@
 	$x->RecordsPerPage = 10;
 	$x->QuickSearch = 1;
 	$x->QuickSearchText = $Translation["quick search"];
-	$x->ScriptFileName = "owners_view.php";
-	$x->RedirectAfterInsert = "owners_view.php?SelectedID=#ID#";
-	$x->TableTitle = "Owners";
-	$x->TableIcon = "resources/table_icons/administrator.png";
-	$x->PrimaryKey = "`owners`.`id`";
+	$x->ScriptFileName = "advertisers_view.php";
+	$x->RedirectAfterInsert = "advertisers_view.php?SelectedID=#ID#";
+	$x->TableTitle = "Advertisers";
+	$x->TableIcon = "resources/table_icons/book_addresses.png";
+	$x->PrimaryKey = "`advertisers`.`id`";
 
-	$x->ColWidth   = array(  150, 150, 150, 150);
-	$x->ColCaption = array("Name", "Pass", "Level", "Image");
-	$x->ColFieldName = array('name', 'pass', 'level', 'image');
-	$x->ColNumber  = array(2, 3, 4, 5);
+	$x->ColWidth   = array(  150, 150, 150, 150, 150);
+	$x->ColCaption = array("Name", "AffilateCode", "URL", "Contact", "Email");
+	$x->ColFieldName = array('Name', 'AffilateCode', 'URL', 'Contact', 'email');
+	$x->ColNumber  = array(2, 3, 4, 5, 6);
 
-	$x->Template = 'templates/owners_templateTV.html';
-	$x->SelectedTemplate = 'templates/owners_templateTVS.html';
+	$x->Template = 'templates/advertisers_templateTV.html';
+	$x->SelectedTemplate = 'templates/advertisers_templateTVS.html';
 	$x->ShowTableHeader = 1;
 	$x->ShowRecordSlots = 0;
 	$x->HighlightColor = '#FFF0C2';
@@ -107,32 +114,32 @@
 	if(!in_array($DisplayRecords, array('user', 'group'))){ $DisplayRecords = 'all'; }
 	if($perm[2]==1 || ($perm[2]>1 && $DisplayRecords=='user' && !$_REQUEST['NoFilter_x'])){ // view owner only
 		$x->QueryFrom.=', membership_userrecords';
-		$x->QueryWhere="where `owners`.`id`=membership_userrecords.pkValue and membership_userrecords.tableName='owners' and lcase(membership_userrecords.memberID)='".getLoggedMemberID()."'";
+		$x->QueryWhere="where `advertisers`.`id`=membership_userrecords.pkValue and membership_userrecords.tableName='advertisers' and lcase(membership_userrecords.memberID)='".getLoggedMemberID()."'";
 	}elseif($perm[2]==2 || ($perm[2]>2 && $DisplayRecords=='group' && !$_REQUEST['NoFilter_x'])){ // view group only
 		$x->QueryFrom.=', membership_userrecords';
-		$x->QueryWhere="where `owners`.`id`=membership_userrecords.pkValue and membership_userrecords.tableName='owners' and membership_userrecords.groupID='".getLoggedGroupID()."'";
+		$x->QueryWhere="where `advertisers`.`id`=membership_userrecords.pkValue and membership_userrecords.tableName='advertisers' and membership_userrecords.groupID='".getLoggedGroupID()."'";
 	}elseif($perm[2]==3){ // view all
 		// no further action
 	}elseif($perm[2]==0){ // view none
 		$x->QueryFields = array("Not enough permissions" => "NEP");
-		$x->QueryFrom = '`owners`';
+		$x->QueryFrom = '`advertisers`';
 		$x->QueryWhere = '';
 		$x->DefaultSortField = '';
 	}
-	// hook: owners_init
+	// hook: advertisers_init
 	$render=TRUE;
-	if(function_exists('owners_init')){
+	if(function_exists('advertisers_init')){
 		$args=array();
-		$render=owners_init($x, getMemberInfo(), $args);
+		$render=advertisers_init($x, getMemberInfo(), $args);
 	}
 
 	if($render) $x->Render();
 
-	// hook: owners_header
+	// hook: advertisers_header
 	$headerCode='';
-	if(function_exists('owners_header')){
+	if(function_exists('advertisers_header')){
 		$args=array();
-		$headerCode=owners_header($x->ContentType, getMemberInfo(), $args);
+		$headerCode=advertisers_header($x->ContentType, getMemberInfo(), $args);
 	}  
 	if(!$headerCode){
 		include_once("$currDir/header.php"); 
@@ -142,11 +149,11 @@
 	}
 
 	echo $x->HTML;
-	// hook: owners_footer
+	// hook: advertisers_footer
 	$footerCode='';
-	if(function_exists('owners_footer')){
+	if(function_exists('advertisers_footer')){
 		$args=array();
-		$footerCode=owners_footer($x->ContentType, getMemberInfo(), $args);
+		$footerCode=advertisers_footer($x->ContentType, getMemberInfo(), $args);
 	}  
 	if(!$footerCode){
 		include_once("$currDir/footer.php"); 

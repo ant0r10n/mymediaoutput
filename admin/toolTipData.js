@@ -47,6 +47,42 @@ owners_delete1Tip=["",spacer+"This option allows each member of the group to del
 owners_delete2Tip=["",spacer+"This option allows each member of the group to delete any record owned by any member of the group in the 'Owners' table."];
 owners_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Owners' table."];
 
+// ads table
+ads_addTip=["",spacer+"This option allows all members of the group to add records to the 'Ads' table. A member who adds a record to the table becomes the 'owner' of that record."];
+
+ads_view0Tip=["",spacer+"This option prohibits all members of the group from viewing any record in the 'Ads' table."];
+ads_view1Tip=["",spacer+"This option allows each member of the group to view only his own records in the 'Ads' table."];
+ads_view2Tip=["",spacer+"This option allows each member of the group to view any record owned by any member of the group in the 'Ads' table."];
+ads_view3Tip=["",spacer+"This option allows each member of the group to view all records in the 'Ads' table."];
+
+ads_edit0Tip=["",spacer+"This option prohibits all members of the group from modifying any record in the 'Ads' table."];
+ads_edit1Tip=["",spacer+"This option allows each member of the group to edit only his own records in the 'Ads' table."];
+ads_edit2Tip=["",spacer+"This option allows each member of the group to edit any record owned by any member of the group in the 'Ads' table."];
+ads_edit3Tip=["",spacer+"This option allows each member of the group to edit any records in the 'Ads' table, regardless of their owner."];
+
+ads_delete0Tip=["",spacer+"This option prohibits all members of the group from deleting any record in the 'Ads' table."];
+ads_delete1Tip=["",spacer+"This option allows each member of the group to delete only his own records in the 'Ads' table."];
+ads_delete2Tip=["",spacer+"This option allows each member of the group to delete any record owned by any member of the group in the 'Ads' table."];
+ads_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Ads' table."];
+
+// advertisers table
+advertisers_addTip=["",spacer+"This option allows all members of the group to add records to the 'Advertisers' table. A member who adds a record to the table becomes the 'owner' of that record."];
+
+advertisers_view0Tip=["",spacer+"This option prohibits all members of the group from viewing any record in the 'Advertisers' table."];
+advertisers_view1Tip=["",spacer+"This option allows each member of the group to view only his own records in the 'Advertisers' table."];
+advertisers_view2Tip=["",spacer+"This option allows each member of the group to view any record owned by any member of the group in the 'Advertisers' table."];
+advertisers_view3Tip=["",spacer+"This option allows each member of the group to view all records in the 'Advertisers' table."];
+
+advertisers_edit0Tip=["",spacer+"This option prohibits all members of the group from modifying any record in the 'Advertisers' table."];
+advertisers_edit1Tip=["",spacer+"This option allows each member of the group to edit only his own records in the 'Advertisers' table."];
+advertisers_edit2Tip=["",spacer+"This option allows each member of the group to edit any record owned by any member of the group in the 'Advertisers' table."];
+advertisers_edit3Tip=["",spacer+"This option allows each member of the group to edit any records in the 'Advertisers' table, regardless of their owner."];
+
+advertisers_delete0Tip=["",spacer+"This option prohibits all members of the group from deleting any record in the 'Advertisers' table."];
+advertisers_delete1Tip=["",spacer+"This option allows each member of the group to delete only his own records in the 'Advertisers' table."];
+advertisers_delete2Tip=["",spacer+"This option allows each member of the group to delete any record owned by any member of the group in the 'Advertisers' table."];
+advertisers_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Advertisers' table."];
+
 /*
 	Style syntax:
 	-------------

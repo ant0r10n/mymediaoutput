@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%select%%> and <%%endselect%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- open the generated 'ads_view.php' file in your text editor and -->
+<!-- change the value of $x->ShowTableHeader to 0 -->
+
+		<td id="ads-advertiser-<%%VALUE(id)%%>" class="ads-advertiser "><%%SELECT%%><%%VALUE(advertiser)%%><%%ENDSELECT%%></td>
+		<td id="ads-adName-<%%VALUE(id)%%>" class="ads-adName "><%%SELECT%%><%%VALUE(adName)%%><%%ENDSELECT%%></td>
+		<td id="ads-image-<%%VALUE(id)%%>" class="ads-image "><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image)%%>" rel="lightbox"><img src="thumbnail.php?i=<%%VALUE(image)%%>&t=ads&f=image&v=tv" class="img-thumbnail"></a></td>
+		<td id="ads-code-<%%VALUE(id)%%>" class="ads-code "><%%SELECT%%><%%VALUE(code)%%><%%ENDSELECT%%></td>
+		<td id="ads-text-<%%VALUE(id)%%>" class="ads-text "><%%SELECT%%><%%VALUE(text)%%><%%ENDSELECT%%></td>
+		<td id="ads-active-<%%VALUE(id)%%>" class="ads-active "><%%SELECT%%><%%VALUE(active)%%><%%ENDSELECT%%></td>
+		<td id="ads-StartDate-<%%VALUE(id)%%>" class="ads-StartDate "><%%SELECT%%><%%VALUE(StartDate)%%><%%ENDSELECT%%></td>
+		<td id="ads-EndDate-<%%VALUE(id)%%>" class="ads-EndDate "><%%SELECT%%><%%VALUE(EndDate)%%><%%ENDSELECT%%></td>
+		<td id="ads-catagory-<%%VALUE(id)%%>" class="ads-catagory "><%%SELECT%%><%%VALUE(catagory)%%><%%ENDSELECT%%></td>

@@ -37,7 +37,9 @@
 		function getTableList(){
 			$arrTables=array(   
 				"media"=>"Media",
-				"owners"=>"Owners"
+				"owners"=>"Owners",
+				"ads"=>"Ads",
+				"advertisers"=>"Advertisers"
 				);
 
 			return $arrTables;
@@ -50,12 +52,16 @@
 		elseif($tableName=='media' && $fieldName=='image' && $view=='dv')
 			return array('width'=>250, 'height'=>250, 'identifier'=>'_dv');
 		elseif($tableName=='media' && $fieldName=='image2' && $view=='tv')
-			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
+			return array('width'=>75, 'height'=>75, 'identifier'=>'_tv');
 		elseif($tableName=='media' && $fieldName=='image2' && $view=='dv')
 			return array('width'=>250, 'height'=>250, 'identifier'=>'_dv');
 		elseif($tableName=='owners' && $fieldName=='image' && $view=='tv')
 			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
 		elseif($tableName=='owners' && $fieldName=='image' && $view=='dv')
+			return array('width'=>250, 'height'=>250, 'identifier'=>'_dv');
+		elseif($tableName=='ads' && $fieldName=='image' && $view=='tv')
+			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
+		elseif($tableName=='ads' && $fieldName=='image' && $view=='dv')
 			return array('width'=>250, 'height'=>250, 'identifier'=>'_dv');
 		return FALSE;
 	}
@@ -437,7 +443,7 @@
 
 		if($adminGroupID){
 			// check that admins can access all tables
-			$all_tables = array(  'media' => 0, 'owners' => 0);
+			$all_tables = array(  'media' => 0, 'owners' => 0, 'ads' => 0, 'advertisers' => 0);
 			$res = sql("select tableName from membership_grouppermissions where groupID='$adminGroupID'", $eo);
 			while($row = mysql_fetch_row($res)){
 				// for all found tables, set all_tables flag to 1, indicating that the table has a record in Admins permissions

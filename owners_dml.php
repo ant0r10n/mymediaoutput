@@ -217,7 +217,7 @@ function owners_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $All
 	$templateCode=str_replace('<%%DETAIL_VIEW_TITLE%%>', 'Owner details', $templateCode);
 	$templateCode=str_replace('<%%RND1%%>', $rnd1, $templateCode);
 	// process buttons
-	if($arrPerm[1]){ // allow insert?
+	if($arrPerm[1] && !$selected_id){ // allow insert and no record selected?
 		if(!$selected_id) $templateCode=str_replace('<%%INSERT_BUTTON%%>', '<button tabindex="2" type="submit" class="btn btn-success" id="insert" name="insert_x" value="1" onclick="return owners_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save New'] . '</button>', $templateCode);
 		$templateCode=str_replace('<%%INSERT_BUTTON%%>', '<button tabindex="2" type="submit" class="btn btn-default" id="insert" name="insert_x" value="1" onclick="return owners_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save As Copy'] . '</button>', $templateCode);
 	}else{
@@ -251,7 +251,7 @@ function owners_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $All
 	}
 
 	// set records to read only if user can't insert new records and can't edit current record
-	if(($selected_id && !$AllowUpdate && !$arrPerm[1]) || (!$selected_id && !$arrPerm[1])){
+	if(($selected_id && !$AllowUpdate) || (!$selected_id && !$arrPerm[1])){
 		$jsReadOnly .= "\tjQuery('#pass').replaceWith('<p class=\"form-control-static\" id=\"pass\">' + (jQuery('#pass').val() || '') + '</p>');\n";
 		$jsReadOnly .= "\tjQuery('#level').replaceWith('<p class=\"form-control-static\" id=\"level\">' + (jQuery('#level').val() || '') + '</p>');\n";
 		$jsReadOnly .= "\tjQuery('#image').replaceWith('<p class=\"form-control-static\" id=\"image\">' + (jQuery('#image').val() || '') + '</p>');\n";

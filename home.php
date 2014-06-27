@@ -45,7 +45,7 @@
 			$i=0;
 			foreach($arrTables as $tn=>$tc){
 				$tChkFF = array_search($tn, array());
-				$tChkHL = array_search($tn, array());
+				$tChkHL = array_search($tn, array('owners'));
 				if($tChkHL !== false && $tChkHL !== null) continue;
 
 				$searchFirst = (($tChkFF !== false && $tChkFF !== null) ? '?Filter_x=1' : '');

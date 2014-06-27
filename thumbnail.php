@@ -12,6 +12,9 @@
 		),
 		'owners' => array(
 			'image' => $Translation['ImageFolder']
+		),
+		'ads' => array(
+			'image' => $Translation['ImageFolder']
 		)
 	);
 

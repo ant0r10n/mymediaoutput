@@ -1,0 +1,80 @@
+<!-- Edit this file to change the layout of the detail view print preview page -->
+
+
+<div class="panel-heading"><h3 class="panel-title">
+	<strong><%%DETAIL_VIEW_TITLE%%></strong>
+	<div class="hidden-print pull-right">
+		<button type="button" id="print" onclick="window.print();" title="<%%TRANSLATION(Print)%%>" class="btn btn-success"><i class="glyphicon glyphicon-print"></i></button>
+		<button type="submit" id="back" title="<%%TRANSLATION(Back)%%>" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i></button>
+	</div>
+	<div class="clearfix"></div>
+</h3></div>
+
+<div class="panel-body">
+	<fieldset class="form-horizontal">
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">ID</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(id)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Advertiser</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(advertiser)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">AdName</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(adName)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Image</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><script>
+				var imageSrc1<%%RND1%%>='<%%TRANSLATION(ImageFolder)%%><%%VALUE(image)%%>';
+				var imageSrc2<%%RND1%%>='thumbnail.php?t=ads&f=image&i=<%%VALUE(image)%%>&v=dv'
+			</script>
+			<a href="#" onclick="$('imageImg<%%RND1%%>').src=($('imageImg<%%RND1%%>').src.search(/thumbnail\.php/) != -1 && imageSrc1<%%RND1%%> != '<%%TRANSLATION(ImageFolder)%%>' ? imageSrc1<%%RND1%%> : imageSrc2<%%RND1%%>); return false;"><img id="imageImg<%%RND1%%>" src="thumbnail.php?t=ads&f=image&i=<%%VALUE(image)%%>&v=dv" class="img-thumbnail"></a></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Code</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(code)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Text</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(text)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Active</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(active)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">StartDate</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%COMBOTEXT(StartDate)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">EndDate</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(EndDate)%%></p>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">ShownOn</label>
+			<div class="col-xs-9">
+				<p class="form-control-static"><%%VALUE(catagory)%%></p>
+			</div>
+		</div>
+	</fieldset>
+</div>

@@ -137,6 +137,19 @@ function media_delete($selected_id, $AllowDeleteOfParents=false, $skipChecks=fal
 			return $Translation['Couldn\'t delete this record'];
 	}
 
+	// delete file stored in the 'image' field
+	$res = sql("select `image` from `media` where `id`='$selected_id'", $eo);
+	if($row=@mysql_fetch_row($res)){
+		if($row[0]!=''){
+			@unlink(getUploadDir('').$row[0]);
+			preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+			$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+			$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+			@unlink(getUploadDir('').$thumbTV);
+			@unlink(getUploadDir('').$thumbDV);
+		}
+	}
+
 	// delete file stored in the 'image2' field
 	$res = sql("select `image2` from `media` where `id`='$selected_id'", $eo);
 	if($row=@mysql_fetch_row($res)){
@@ -234,10 +247,36 @@ function media_update($selected_id){
 	$data['selectedID']=makeSafe($selected_id);
 	if($_POST['image_remove'] == 1){
 		$data['image'] = '';
+		// delete file from server
+		$res = sql("select `image` from `media` where `id`='".makeSafe($selected_id)."'", $eo);
+		if($row=@mysql_fetch_row($res)){
+			if($row[0]!=''){
+				@unlink(getUploadDir('').$row[0]);
+				preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+				$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+				$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+				@unlink(getUploadDir('').$thumbTV);
+				@unlink(getUploadDir('').$thumbDV);
+			}
+		}
 	}else{
 		$data['image'] = PrepareUploadedFile('image', 1024000, 'jpg|jpeg|gif|png', false, "");
 		if($data['image']) createThumbnail($data['image'], getThumbnailSpecs('media', 'image', 'tv'));
 		if($data['image']) createThumbnail($data['image'], getThumbnailSpecs('media', 'image', 'dv'));
+		// delete file from server
+		if($data['image'] != ''){
+			$res = sql("select `image` from `media` where `id`='".makeSafe($selected_id)."'", $eo);
+			if($row=@mysql_fetch_row($res)){
+				if($row[0]!=''){
+					@unlink(getUploadDir('').$row[0]);
+					preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+					$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+					$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+					@unlink(getUploadDir('').$thumbTV);
+					@unlink(getUploadDir('').$thumbDV);
+				}
+			}
+		}
 	}
 	if($_POST['image2_remove'] == 1){
 		$data['image2'] = '';

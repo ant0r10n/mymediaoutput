@@ -14,6 +14,10 @@
 		'owners' => array(
 			'image' => $Translation['ImageFolder'],
 			'primary key' => 'id'
+		),
+		'ads' => array(
+			'image' => $Translation['ImageFolder'],
+			'primary key' => 'id'
 		)
 	);
 

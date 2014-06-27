@@ -34,6 +34,10 @@
 		'media' => array(  
 		),
 		'owners' => array(  
+		),
+		'ads' => array(  
+		),
+		'advertisers' => array(  
 		)
 	);
 

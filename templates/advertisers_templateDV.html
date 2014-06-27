@@ -1,0 +1,102 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<a name="detail-view"></a>
+<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+
+<div class="panel-body" id="advertisers_dv_container">
+	<!-- child links -->
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<!-- form inputs -->
+		<div class="col-md-8 col-lg-10" id="advertisers_dv_form">
+			<fieldset class="form-horizontal">
+
+				<div class="form-group">
+					<label for="id" class="control-label col-lg-3">ID</label>
+					<div class="col-lg-9">
+						<p class="form-control-static" id="id"><%%VALUE(id)%%></p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="Name" class="control-label col-lg-3">Name</label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="40" type="text" class="form-control" name="Name" id="Name" value="<%%VALUE(Name)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="AffilateCode" class="control-label col-lg-3">AffilateCode</label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="40" type="text" class="form-control" name="AffilateCode" id="AffilateCode" value="<%%VALUE(AffilateCode)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="URL" class="control-label col-lg-3">URL</label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="40" type="text" class="form-control" name="URL" id="URL" value="<%%VALUE(URL)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="Contact" class="control-label col-lg-3">Contact</label>
+					<div class="col-lg-9">
+						<input tabindex="1" maxlength="40" type="text" class="form-control" name="Contact" id="Contact" value="<%%VALUE(Contact)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="email" class="control-label col-lg-3">Email</label>
+					<div class="col-lg-9">
+						
+						<p class="form-control-static">
+							<a id="email-link" href="mailto:<%%VALUE(email)%%>" target="_blank"><i class="glyphicon glyphicon-envelope text-info" title="<%%VALUE(email)%%>"></i></a>
+							<label for="email"><button type="button" id="email-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#email" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
+						</p>
+						<script>jQuery(function(){ var e_email = '<%%VALUE(email)%%>'; if(e_email == '' || e_email == '&nbsp;' || e_email == 'blank.gif') jQuery('#email-link').hide(); });</script><input tabindex="1" maxlength="80" type="text" class="form-control collapse" name="email" id="email" value="<%%VALUE(email)%%>">
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+
+		<!-- DV action buttons -->
+		<div class="col-md-4 col-lg-2" id="advertisers_dv_action_buttons">
+			<div class="btn-toolbar">
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%UPDATE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%DESELECT_BUTTON%%>
+					<%%DVPRINT_BUTTON%%>
+					<%%DELETE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%INSERT_BUTTON%%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div><!-- /div class="panel-body" -->
+	<script>
+		jQuery(function(){
+			var formAlreadyChanged = 0;
+			jQuery('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			jQuery('form').eq(0).change(function(){
+				if(formAlreadyChanged) return;
+				if(jQuery('#deselect').length) jQuery('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				formAlreadyChanged = 1;
+			});
+
+			jQuery('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ return false; });
+		});
+
+	</script>

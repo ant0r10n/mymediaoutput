@@ -34,6 +34,16 @@
 		$owners_edit=checkPermissionVal('owners_edit');
 		$owners_delete=checkPermissionVal('owners_delete');
 		###############################
+		$ads_insert=checkPermissionVal('ads_insert');
+		$ads_view=checkPermissionVal('ads_view');
+		$ads_edit=checkPermissionVal('ads_edit');
+		$ads_delete=checkPermissionVal('ads_delete');
+		###############################
+		$advertisers_insert=checkPermissionVal('advertisers_insert');
+		$advertisers_view=checkPermissionVal('advertisers_view');
+		$advertisers_edit=checkPermissionVal('advertisers_edit');
+		$advertisers_delete=checkPermissionVal('advertisers_delete');
+		###############################
 
 		// new group or old?
 		if($_POST['groupID']==''){ // new group
@@ -71,6 +81,8 @@
 			// reset then add group permissions
 			sql("delete from membership_grouppermissions where groupID='$groupID' and tableName='media'", $eo);
 			sql("delete from membership_grouppermissions where groupID='$groupID' and tableName='owners'", $eo);
+			sql("delete from membership_grouppermissions where groupID='$groupID' and tableName='ads'", $eo);
+			sql("delete from membership_grouppermissions where groupID='$groupID' and tableName='advertisers'", $eo);
 		}
 
 		// add group permissions
@@ -79,6 +91,10 @@
 			sql("insert into membership_grouppermissions set groupID='$groupID', tableName='media', allowInsert='$media_insert', allowView='$media_view', allowEdit='$media_edit', allowDelete='$media_delete'", $eo);
 			// table 'owners'
 			sql("insert into membership_grouppermissions set groupID='$groupID', tableName='owners', allowInsert='$owners_insert', allowView='$owners_view', allowEdit='$owners_edit', allowDelete='$owners_delete'", $eo);
+			// table 'ads'
+			sql("insert into membership_grouppermissions set groupID='$groupID', tableName='ads', allowInsert='$ads_insert', allowView='$ads_view', allowEdit='$ads_edit', allowDelete='$ads_delete'", $eo);
+			// table 'advertisers'
+			sql("insert into membership_grouppermissions set groupID='$groupID', tableName='advertisers', allowInsert='$advertisers_insert', allowView='$advertisers_view', allowEdit='$advertisers_edit', allowDelete='$advertisers_delete'", $eo);
 		}
 
 		// redirect to group editing page
@@ -236,6 +252,50 @@
 						<td class="tdCell">
 							<?php
 								echo htmlRadioGroup("owners_delete", $arrPermVal, $arrPermText, $owners_delete, "highlight");
+							?>
+							</td>
+						</tr>
+				<!-- ads table -->
+					<tr>
+						<td class="tdCaptionCell" valign="top">Ads</td>
+						<td class="tdCell" valign="top">
+							<input onMouseOver="stm(ads_addTip, toolTipStyle);" onMouseOut="htm();" type="checkbox" name="ads_insert" value="1" <?php echo ($ads_insert ? "checked class=\"highlight\"" : ""); ?>>
+							</td>
+						<td class="tdCell">
+							<?php
+								echo htmlRadioGroup("ads_view", $arrPermVal, $arrPermText, $ads_view, "highlight");
+							?>
+							</td>
+						<td class="tdCell">
+							<?php
+								echo htmlRadioGroup("ads_edit", $arrPermVal, $arrPermText, $ads_edit, "highlight");
+							?>
+							</td>
+						<td class="tdCell">
+							<?php
+								echo htmlRadioGroup("ads_delete", $arrPermVal, $arrPermText, $ads_delete, "highlight");
+							?>
+							</td>
+						</tr>
+				<!-- advertisers table -->
+					<tr>
+						<td class="tdCaptionCell" valign="top">Advertisers</td>
+						<td class="tdCell" valign="top">
+							<input onMouseOver="stm(advertisers_addTip, toolTipStyle);" onMouseOut="htm();" type="checkbox" name="advertisers_insert" value="1" <?php echo ($advertisers_insert ? "checked class=\"highlight\"" : ""); ?>>
+							</td>
+						<td class="tdCell">
+							<?php
+								echo htmlRadioGroup("advertisers_view", $arrPermVal, $arrPermText, $advertisers_view, "highlight");
+							?>
+							</td>
+						<td class="tdCell">
+							<?php
+								echo htmlRadioGroup("advertisers_edit", $arrPermVal, $arrPermText, $advertisers_edit, "highlight");
+							?>
+							</td>
+						<td class="tdCell">
+							<?php
+								echo htmlRadioGroup("advertisers_delete", $arrPermVal, $arrPermText, $advertisers_delete, "highlight");
 							?>
 							</td>
 						</tr>
